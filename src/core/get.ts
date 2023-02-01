@@ -15,8 +15,8 @@ export async function get<T>(
 		},
 		body: JSON.stringify(bodyArgs),
 	}
-
-	const r = await fetch(url, config)
+	const request = new Request(url, config)
+	const r = await fetch(request)
 	const data = await r.json()
 	const res: HttpResponse<T> = {
 		...r,

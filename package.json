@@ -28,7 +28,7 @@
 	"scripts": {
 		"test": "jest",
 		"build:dist": "rm -rf dist && tsc --project tsconfig.json && tsc --project tsconfig.cjs.json && node create-dist-package-jsons.mjs",
-		"build:docs": "typedoc", 
+		"build:docs": "typedoc",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {

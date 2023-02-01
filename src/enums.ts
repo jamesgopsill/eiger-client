@@ -41,3 +41,25 @@ export enum PrintingState {
 	COOLING_DOWN = "Cooling Down",
 	UNKNOWN = "Unknown",
 }
+
+export enum QueuedPrintJobState {
+	QUEUED = "Queued",
+	REMOVED = "Removed",
+	STARTED = "Started",
+	UNKNOWN = "Unknown",
+}
+
+export enum PrintedPartViewState {
+	UNKNOWN = "Unknown",
+	PRINTING = "Printing",
+	PRINT_FAILED = "Print Failed",
+	PRINTED = "Printed",
+	WASHING = "Washing",
+	WASHED = "Washed",
+	DRYING = "Drying",
+	DRIED = "Dried",
+	SINTERING = "Sintering",
+	SINTER_FAILED = "Sinter Failed",
+	WASH_ABORTED = "Wash Aborted",
+	DISCARDED = "Discarded",
+}

@@ -1,6 +1,9 @@
 import { get } from "./core/get.js"
 import { ping } from "./core/ping.js"
-import { listAllDevices } from "./endpoints/list-all-devices.js"
+import * as Builds from "./endpoints/builds.js"
+import * as Devices from "./endpoints/devices.js"
+import * as Parts from "./endpoints/parts.js"
+import * as PrintJobs from "./endpoints/print-jobs.js"
 
 export * from "./definitions.js"
 export * from "./enums.js"
@@ -18,9 +21,26 @@ export class EigerClient {
 	}
 
 	// Core Functionality
-	public ping = ping
-	public get = get
+	protected ping = ping
+	protected get = get
 
 	// API specific calls
-	public listAllDevices = listAllDevices
+	public builds = Builds.builds
+	public build = Builds.build
+	public approvedBuilds = Builds.approvedBuilds
+
+	public devices = Devices.devices
+	public device = Devices.device
+	public deviceQueue = Devices.deviceQueue
+	public queuedJob = Devices.queuedJob
+
+	public part = Parts.part
+	public partVersion = Parts.partVersion
+	public partVersionDownloadUrl = Parts.partVersionDownloadUrl
+	public printedParts = Parts.printedParts
+	public printedPart = Parts.printedPart
+
+	public printJobs = PrintJobs.printJobs
+	public printJob = PrintJobs.printJob
+	public printJobScanReport = PrintJobs.printJobScanReport
 }
