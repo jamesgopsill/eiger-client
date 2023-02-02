@@ -1,5 +1,8 @@
+import { del } from "./core/delete.js"
 import { get } from "./core/get.js"
 import { ping } from "./core/ping.js"
+import { post } from "./core/post.js"
+import { put } from "./core/put.js"
 import * as Builds from "./endpoints/builds.js"
 import * as Devices from "./endpoints/devices.js"
 import * as Parts from "./endpoints/parts.js"
@@ -23,16 +26,25 @@ export class EigerClient {
 	// Core Functionality
 	protected ping = ping
 	protected get = get
+	protected post = post
+	protected put = put
+	protected delete = del
 
 	// API specific calls
 	public builds = Builds.builds
 	public build = Builds.build
 	public approvedBuilds = Builds.approvedBuilds
+	public sendToBacklog = Builds.sendToBacklog
+	public approveBuilds = Builds.approveBuilds
+	public disableBuildApprovals = Builds.disableBuildApprovals
 
 	public devices = Devices.devices
 	public device = Devices.device
 	public deviceQueue = Devices.deviceQueue
 	public queuedJob = Devices.queuedJob
+	public print = Devices.print
+	public addToBuildQueue = Devices.addToBuildQueue
+	public removeFromQueue = Devices.removeFromQueue
 
 	public part = Parts.part
 	public partVersion = Parts.partVersion

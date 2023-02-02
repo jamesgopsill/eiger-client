@@ -2,13 +2,13 @@ import type { EigerClient, HttpResponse } from "../index.js"
 import { keysToCamel } from "./keys-to-camel.js"
 import { stringsToDates } from "./strings-to-dates.js"
 
-export async function get<T>(
+export async function post<T>(
 	this: EigerClient,
 	url: string,
 	bodyArgs: {} = {}
 ) {
 	const config: RequestInit = {
-		method: "GET",
+		method: "POST",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json",

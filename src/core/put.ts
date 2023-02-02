@@ -1,14 +1,10 @@
-import type { EigerClient, HttpResponse } from "../index.js"
+import type { EigerClient } from "../index.js"
 import { keysToCamel } from "./keys-to-camel.js"
 import { stringsToDates } from "./strings-to-dates.js"
 
-export async function get<T>(
-	this: EigerClient,
-	url: string,
-	bodyArgs: {} = {}
-) {
+export async function put(this: EigerClient, url: string, bodyArgs: {} = {}) {
 	const config: RequestInit = {
-		method: "GET",
+		method: "PUT",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json",
@@ -18,10 +14,6 @@ export async function get<T>(
 		body: JSON.stringify(bodyArgs),
 	}
 	const request = new Request(url, config)
-	const r = (await fetch(request)) as HttpResponse<T>
-	let data = await r.json()
-	data = keysToCamel(data)
-	data = stringsToDates(data)
-	r.data = data
+	const r = await fetch(request)
 	return r
 }

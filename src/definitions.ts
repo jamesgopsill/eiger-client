@@ -17,96 +17,96 @@ export type HttpResponse<T> =
 export interface BuildView {
 	id: string
 	title: string
-	created_at: string | null
-	updated_at: string | null
-	part_count: number
-	preview_url: string
-	device_series: string
-	primary_material: string
-	secondary_material: string
-	ccs_primary_required: number | null
-	ccs_secondary_required: number | null
-	ccs_tertiary_required: number | null
-	estimated_print_seconds: number | null
+	createdAt: Date | null
+	updatedAt: Date | null
+	partCount: number
+	previewUrl: string
+	deviceSeries: string
+	primaryMaterial: string
+	secondaryMaterial: string
+	ccsPrimaryRequired: number | null
+	ccsSecondaryRequired: number | null
+	ccsTertiaryRequired: number | null
+	estimatedPrintSeconds: number | null
 	sliced: boolean
-	blacksmith_enabled: boolean
+	blacksmithEnabled: boolean
 	approved: boolean
 }
 
 export interface Job {
 	id: string
 	state: Enums.PrintJobState
-	queued_at: string | null
-	created_at: string | null
-	started_at: string | null
-	updated_at: string | null
-	ended_at: string | null
-	printing_state: Enums.PrintingState
-	current_layer: number | null
-	layer_count: number | null
+	queuedAt: Date | null
+	createdAt: Date | null
+	startedAt: Date | null
+	updatedAt: Date | null
+	endedAt: Date | null
+	printingState: Enums.PrintingState
+	currentLayer: number | null
+	layerCount: number | null
 	progress: number | null
-	estimated_seconds_remaining: number | null
+	estimatedSecondsRemaining: number | null
 	build: BuildView
 }
 
 export interface Device {
 	id: string
 	name: string
-	device_type: string
-	device_series: string
-	created_at: string | null
-	updated_at: string | null
-	queue_estimated_time_seconds: number | null
-	queue_length: number | null
-	loaded_primary_material: string | null
-	ccs_primary_remaining: number | null
-	ccs_secondary_remaining: number | null
+	deviceType: string
+	deviceSeries: string
+	createdAt: Date | null
+	updatedAt: Date | null
+	queueEstimatedTimeSeconds: number | null
+	queueLength: number | null
+	loadedPrimaryMaterial: string | null
+	ccsPrimaryRemaining: number | null
+	ccsSecondaryRemaining: number | null
 	state: Enums.PrinterState
-	active_job: Job
+	activeJob: Job
 }
 
 export interface ListDevicesData {
-	has_more_items: boolean
+	hasMoreItems: boolean
 	items: Device[]
 }
 
 export interface ListBuildsData {
-	has_more_items: boolean
+	hasMoreItems: boolean
 	items: BuildView[]
 }
 
 export interface Build {
 	id: string
 	title: string
-	created_at: string | null
-	updated_at: string | null
-	part_count: number
-	preview_url: string
-	device_series: string
-	primary_material: string
-	secondary_material: string
-	ccs_primary_required: number | null
-	ccs_secondary_remaining: number | null
-	ccs_tertiary_remaining: number | null
-	estimated_print_seconds: number | null
+	createdAt: Date | null
+	updatedAt: Date | null
+	partCount: number
+	previewUrl: string
+	deviceSeries: string
+	primaryMaterial: string
+	secondaryMaterial: string
+	ccsPrimaryRequired: number | null
+	ccsSecondaryRemaining: number | null
+	ccsTertiaryRemaining: number | null
+	estimatedPrintSeconds: number | null
 	sliced: boolean
-	blacksmith_enabled: boolean
+	blacksmithEnabled: boolean
 	approved: boolean | null
-	part_versions: PartVersionView[]
+	partVersions: PartVersionView[]
 	poses: PoseView[]
 }
 
 export interface PartVersionView {
 	id: string
-	part_id: string
+	partId: string
 	title: string
 	description: string | null
-	version_number: number
-	preview_url: string
+	versionNumber: number
+	previewUrl: string
 	sliced: boolean
-	device_series: string
-	primary_material: string
-	secondary_material: string
+	deviceSeries: string
+	primaryMaterial: string
+	secondaryMaterial: string
 	settings: Settings
 }
 
@@ -120,8 +120,8 @@ export interface PoseView {
 export interface QueuedPrintJobViewExtended {
 	id: string
 	state: Enums.QueuedPrintJobState
-	queued_at: string | null
-	updated_at: string | null
+	queuedAt: Date | null
+	updatedAt: Date | null
 	build: BuildView
 }
 
@@ -133,18 +133,18 @@ export interface DeviceQueue {
 export interface QueuedPrintJobView {
 	id: string
 	state: Enums.QueuedPrintJobState
-	queued_at: string | null
-	updated_at: string | null
+	queuedAt: Date | null
+	updatedAt: Date | null
 	build: BuildView
 }
 
 export interface Part {
 	id: string
-	created_at: string | null
-	updated_at: string | null
-	cloned_from: string | null
-	latest_partversion: string | null
-	part_versions: string[]
+	createdAt: Date | null
+	updatedAt: Date | null
+	clonedFrom: string | null
+	latestPartVersion: string | null
+	partVersions: string[]
 }
 
 export interface Settings {
@@ -159,15 +159,15 @@ export interface Settings {
 
 export interface PartVersion {
 	id: string
-	part_id: string
+	partId: string
 	title: string
 	description: string | null
-	version_number: number
-	preview_url: string
+	versionNumber: number
+	previewUrl: string
 	sliced: boolean
-	device_series: string
-	primary_material: string
-	secondary_material: string
+	deviceSeries: string
+	primaryMaterial: string
+	secondaryMaterial: string
 	settings: Settings
 }
 
@@ -175,63 +175,80 @@ export interface PrintedPartViewExtended {
 	id: string
 	state: Enums.PrintedPartViewState
 	notes: string | null
-	printed_at: string | null
-	updated_at: string | null
-	print_job: {
+	printedAt: Date | null
+	updatedAt: Date | null
+	printJob: {
 		id: string
 		state: Enums.PrintJobState
-		queued_at: string | null
-		created_at: string | null
-		started_at: string | null
-		updated_at: string | null
-		ended_at: string | null
+		queuedAt: Date | null
+		createdAt: Date | null
+		startedAt: Date | null
+		updatedAt: Date | null
+		endedAt: Date | null
 		build: BuildView
 	}
 }
 
 export interface PrintedPartsData {
-	has_more_items: boolean
+	hasMoreItems: boolean
 	items: PrintedPartViewExtended
 }
 
 export interface DeviceView {
 	id: string
 	name: string
-	device_type: string
-	device_series: string
-	created_at: string | null
-	updated_at: string | null
-	queue_estimated_time_seconds: number | null
-	queue_length: number | null
-	loaded_primary_material: string | null
-	ccs_primary_remaining: number | null
-	ccs_secondary_remaining: number | null
+	deviceType: string
+	deviceSeries: string
+	createdAt: Date | null
+	updatedAt: Date | null
+	queueEstimatedTimeSeconds: number | null
+	queueLength: number | null
+	loadedPrimaryMaterial: string | null
+	ccsPrimaryRemaining: number | null
+	ccsSecondaryRemaining: number | null
 	state: Enums.PrinterState
 }
 
 export interface PrintJobViewExtended {
 	id: string
 	state: Enums.PrintJobState
-	queued_at: string | null
-	created_at: string | null
-	started_at: string | null
-	updated_at: string | null
-	ended_at: string | null
-	printing_state: Enums.PrintingState
-	current_layer: number | null
-	layer_count: number | null
+	queuedAt: Date | null
+	createdAt: Date | null
+	startedAt: Date | null
+	updatedAt: Date | null
+	endedAt: Date | null
+	printingState: Enums.PrintingState
+	currentLayer: number | null
+	layerCount: number | null
 	progress: number | null
-	estimated_seconds_remaining: number | null
+	estimatedSecondsRemaining: number | null
 	build: BuildView
 	device: DeviceView
 }
 
 export interface PrintJobsData {
-	has_more_items: boolean
+	hasMoreItems: boolean
 	items: PrintJobViewExtended[]
 }
 
 export interface ScanReport {
-	printed_part_id: string
-	scan_erport_url: string | null
+	printedPartId: string
+	scanErportUrl: string | null
+}
+
+export interface BacklogResponse {
+	id: string
+	state: Enums.PrintJobState
+	queuedAt: Date | null
+	createdAt: Date | null
+	startedAt: Date | null
+	updatedAt: Date | null
+	endedAt: Date | null
+}
+
+export interface AddToBuildQueueResponse {
+	id: string
+	state: Enums.QueuedPrintJobState
+	queuedAt: Date | null
+	updatedAt: Date | null
 }

@@ -1,6 +1,11 @@
-import type { Build, EigerClient, ListBuildsData } from "../index.js"
+import type {
+	BacklogResponse,
+	Build,
+	EigerClient,
+	ListBuildsData,
+} from "../index.js"
 
-export function builds(
+export async function builds(
 	this: EigerClient,
 	pageNumber: number = 1,
 	pageSize: number = 100
@@ -9,16 +14,37 @@ export function builds(
 	return this.get<ListBuildsData>(url)
 }
 
-export function build(this: EigerClient, id: string) {
+export async function build(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/builds/${id}`
 	return this.get<Build>(url)
 }
 
-export function approvedBuilds(
+export async function approvedBuilds(
 	this: EigerClient,
 	pageNumber: number = 1,
 	pageSize: number = 100
 ) {
 	const url = `${this.baseUrl}/builds/approved?page[number]=${pageNumber}&page[size]=${pageSize}`
 	return this.get<ListBuildsData>(url)
+}
+
+export async function sendToBacklog(
+	this: EigerClient,
+	id: string,
+	dueDate: string
+) {
+	const url = `${this.baseUrl}/backlog/${id}`
+	const args = { dueDate }
+	return this.post<BacklogResponse>(url, args)
+}
+
+export async function approveBuilds(this: EigerClient, buildIds: string[]) {
+	const url = `${this.baseUrl}/builds/approved`
+	const args = { builds: buildIds }
+	return this.put(url, args)
+}
+
+export async function disableBuildApprovals(this: EigerClient) {
+	const url = `${this.baseUrl}/builds/approved`
+	return this.delete(url)
 }
