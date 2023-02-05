@@ -7,17 +7,17 @@ import type {
 
 export async function part(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/part/${id}`
-	return this.get<Part>(url)
+	return this._get<Part>(url)
 }
 
 export async function partVersion(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/part_versions/${id}`
-	return this.get<Part>(url)
+	return this._get<Part>(url)
 }
 
 export async function partVersionDownloadUrl(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/part_versions/${id}/download`
-	return this.get<{ url: string }>(url)
+	return this._get<{ url: string }>(url)
 }
 
 export async function printedParts(
@@ -26,10 +26,10 @@ export async function printedParts(
 	pageSize: number = 100
 ) {
 	const url = `${this.baseUrl}/printed_parts?page[number]=${pageNumber}&page[size]=${pageSize}`
-	return this.get<PrintedPartsData>(url)
+	return this._get<PrintedPartsData>(url)
 }
 
 export async function printedPart(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/printed_parts/${id}`
-	return this.get<PrintedPartViewExtended>(url)
+	return this._get<PrintedPartViewExtended>(url)
 }

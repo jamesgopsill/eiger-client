@@ -13,17 +13,17 @@ export async function devices(
 	pageSize: number = 100
 ) {
 	const url = `${this.baseUrl}/devices?page[number]=${pageNumber}&page[size]=${pageSize}`
-	return this.get<ListDevicesData>(url)
+	return this._get<ListDevicesData>(url)
 }
 
 export async function device(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/devices/${id}`
-	return this.get<Device>(url)
+	return this._get<Device>(url)
 }
 
 export async function deviceQueue(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/devices/${id}/queue`
-	return this.get<DeviceQueue>(url)
+	return this._get<DeviceQueue>(url)
 }
 
 export async function queuedJob(
@@ -32,7 +32,7 @@ export async function queuedJob(
 	jobId: string
 ) {
 	const url = `${this.baseUrl}/devices/${deviceId}/queue/${jobId}`
-	return this.get<QueuedPrintJobView>(url)
+	return this._get<QueuedPrintJobView>(url)
 }
 
 export async function print(
@@ -44,7 +44,7 @@ export async function print(
 	const args = {
 		build: buildId,
 	}
-	return this.post<BacklogResponse>(url, args)
+	return this._post<BacklogResponse>(url, args)
 }
 
 export async function addToBuildQueue(
@@ -56,7 +56,7 @@ export async function addToBuildQueue(
 	const args = {
 		build: buildId,
 	}
-	return this.post<any>(url, args)
+	return this._post<any>(url, args)
 }
 
 export async function removeFromQueue(
@@ -65,5 +65,5 @@ export async function removeFromQueue(
 	queuedId: string
 ) {
 	const url = `${this.baseUrl}/devices/${deviceId}/queue/${queuedId}`
-	return this.delete(url)
+	return this._delete(url)
 }

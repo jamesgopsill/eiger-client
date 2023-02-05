@@ -11,12 +11,12 @@ export async function builds(
 	pageSize: number = 100
 ) {
 	const url = `${this.baseUrl}/builds?page[number]=${pageNumber}&page[size]=${pageSize}`
-	return this.get<ListBuildsData>(url)
+	return this._get<ListBuildsData>(url)
 }
 
 export async function build(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/builds/${id}`
-	return this.get<Build>(url)
+	return this._get<Build>(url)
 }
 
 export async function approvedBuilds(
@@ -25,7 +25,7 @@ export async function approvedBuilds(
 	pageSize: number = 100
 ) {
 	const url = `${this.baseUrl}/builds/approved?page[number]=${pageNumber}&page[size]=${pageSize}`
-	return this.get<ListBuildsData>(url)
+	return this._get<ListBuildsData>(url)
 }
 
 export async function sendToBacklog(
@@ -35,16 +35,16 @@ export async function sendToBacklog(
 ) {
 	const url = `${this.baseUrl}/backlog/${id}`
 	const args = { dueDate }
-	return this.post<BacklogResponse>(url, args)
+	return this._post<BacklogResponse>(url, args)
 }
 
 export async function approveBuilds(this: EigerClient, buildIds: string[]) {
 	const url = `${this.baseUrl}/builds/approved`
 	const args = { builds: buildIds }
-	return this.put(url, args)
+	return this._put(url, args)
 }
 
 export async function disableBuildApprovals(this: EigerClient) {
 	const url = `${this.baseUrl}/builds/approved`
-	return this.delete(url)
+	return this._delete(url)
 }

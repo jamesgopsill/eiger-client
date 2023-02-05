@@ -25,10 +25,10 @@ export class EigerClient {
 
 	// Core Functionality
 	protected ping = ping
-	protected get = get
-	protected post = post
-	protected put = put
-	protected delete = del
+	protected _get = get
+	protected _post = post
+	protected _put = put
+	protected _delete = del
 
 	// API specific calls
 	public builds = Builds.builds
