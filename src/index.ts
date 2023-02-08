@@ -24,7 +24,7 @@ export class EigerClient {
 	}
 
 	// Core Functionality
-	protected ping = ping
+	public ping = ping
 	protected _get = get
 	protected _post = post
 	protected _put = put

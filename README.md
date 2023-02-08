@@ -42,7 +42,7 @@ if (r.ok) {
 
 ## Client Docs
 
-The client documentation have been produced using [TypeDoc](https://typedoc.org/) and can be accessed [here](https://jamesgopsill.github.io/octoprint-client/). More details on the API can be found at [Eiger.io](https://www.eiger.io/developer).
+The client documentation have been produced using [TypeDoc](https://typedoc.org/) and can be accessed [here](https://jamesgopsill.github.io/eiger-client/). More details on the API can be found at [Eiger.io](https://www.eiger.io/developer).
 
 ## Contributing
 
