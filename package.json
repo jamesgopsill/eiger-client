@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "eiger-client",
+	"name": "@jamesgopsill/eiger-client",
 	"version": "0.0.1",
 	"description": "A client to the Markforged Eiger API for AM machine fleet management.",
 	"main": "./dist/cjs/index.js",
