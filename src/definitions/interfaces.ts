@@ -7,11 +7,11 @@ export interface ErrorMessage {
 export type HttpResponse<T> =
 	| ({
 			ok: true
-			data: T
+			content: T
 	  } & Response)
 	| ({
 			ok: false
-			data: ErrorMessage
+			content: undefined
 	  } & Response)
 
 export interface BuildView {

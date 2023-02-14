@@ -1,15 +1,11 @@
-import { del } from "./core/delete.js"
-import { get } from "./core/get.js"
-import { ping } from "./core/ping.js"
-import { post } from "./core/post.js"
-import { put } from "./core/put.js"
+import { fetchIt } from "./core/fetch-it.js"
 import * as Builds from "./endpoints/builds.js"
 import * as Devices from "./endpoints/devices.js"
 import * as Parts from "./endpoints/parts.js"
 import * as PrintJobs from "./endpoints/print-jobs.js"
 
-export * from "./definitions.js"
-export * from "./enums.js"
+export * from "./definitions/enums.js"
+export * from "./definitions/interfaces.js"
 
 export class EigerClient {
 	public readonly baseUrl: string = "https://www.eiger.io/api/v3"
@@ -24,11 +20,8 @@ export class EigerClient {
 	}
 
 	// Core Functionality
-	public ping = ping
-	protected _get = get
-	protected _post = post
-	protected _put = put
-	protected _delete = del
+	public ping = () => "pong"
+	protected _fetch = fetchIt
 
 	// API specific calls
 	public builds = Builds.builds

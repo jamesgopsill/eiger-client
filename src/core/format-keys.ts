@@ -6,6 +6,11 @@ const toCamel = (s: string) => {
 	})
 }
 
+// https://stackoverflow.com/questions/54246477/how-to-convert-camelcase-to-snake-case-in-javascript
+const toSnake = (s: string) => {
+	return s.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
+}
+
 const isArray = function (a: any) {
 	return Array.isArray(a)
 }
@@ -27,6 +32,24 @@ export const keysToCamel = (o: any) => {
 	} else if (isArray(o)) {
 		return o.map((i: any) => {
 			return keysToCamel(i)
+		})
+	}
+	return o
+}
+
+export const keysToSnake = (o: any) => {
+	if (isObject(o)) {
+		const n = {}
+
+		Object.keys(o).forEach((k) => {
+			//@ts-expect-error
+			n[toSnake(k)] = keysToSnake(o[k])
+		})
+
+		return n
+	} else if (isArray(o)) {
+		return o.map((i: any) => {
+			return keysToSnake(i)
 		})
 	}
 	return o

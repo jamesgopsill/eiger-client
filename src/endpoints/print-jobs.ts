@@ -10,16 +10,20 @@ export async function printJobs(
 	pageNumber: number = 1,
 	pageSize: number = 100
 ) {
-	const url = `${this.baseUrl}/printed_jobs?page[number]=${pageNumber}&page[size]=${pageSize}}`
-	return this._get<PrintJobsData>(url)
+	const url = `${this.baseUrl}/printed_jobs`
+	const params = {
+		"page[number]": pageNumber,
+		"page[size]": pageSize,
+	}
+	return this._fetch<PrintJobsData>("GET", url, params)
 }
 
 export async function printJob(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/printed_jobs/${id}`
-	return this._get<PrintJobViewExtended>(url)
+	return this._fetch<PrintJobViewExtended>("GET", url)
 }
 
 export async function printJobScanReport(this: EigerClient, id: string) {
 	const url = `${this.baseUrl}/printed_jobs/${id}/scan_report`
-	return this._get<ScanReport>(url)
+	return this._fetch<ScanReport>("GET", url)
 }
